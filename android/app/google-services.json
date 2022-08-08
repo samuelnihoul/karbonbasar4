@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "761017450319",
+    "project_id": "hypnotic-trees-328016",
+    "storage_bucket": "hypnotic-trees-328016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761017450319:android:5b405f30394eb1a88c0f3a",
+        "android_client_info": {
+          "package_name": "com.example.karbonbasar4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761017450319-mcue4aqnrkfdst806du4fhpn9n75bjnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpo3ZnN__iQdXNXzDk-WHW-Bp7WH-HHKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761017450319-mcue4aqnrkfdst806du4fhpn9n75bjnd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "761017450319-tjdjh629t30v8u8pubvp67kb1g3ejv5l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.karbonbasar4"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
