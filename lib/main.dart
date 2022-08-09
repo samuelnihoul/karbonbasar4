@@ -8,7 +8,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   runApp(const MyApp());
 }
 
@@ -34,9 +34,12 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
+
     return Scaffold(
-      body: ListView(children: [ListTile(title: Text('Our Products'))]
-      ),
+      body: ListView(children: [
+        ListTile(title: Text('Our Products')),
+        
+      ]),
     );
   }
 }
