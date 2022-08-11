@@ -45,12 +45,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyA3fgOQa9S3_BWLv0TKukclIIo-b8MaQjc',
-    appId: '1:761017450319:web:b643796d4cd995728c0f3a',
+    appId: '1:761017450319:web:5664ca82592d283e8c0f3a',
     messagingSenderId: '761017450319',
     projectId: 'hypnotic-trees-328016',
     authDomain: 'hypnotic-trees-328016.firebaseapp.com',
     storageBucket: 'hypnotic-trees-328016.appspot.com',
-    measurementId: 'G-DND0JX74XV',
+    measurementId: 'G-MW7B6FFSV8',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
