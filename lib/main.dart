@@ -12,6 +12,8 @@ void main() async {
   runApp(const MyApp());
 }
 
+final db = new dbService();
+
 // in this view we have the list of the projects and we can checkout using Paypal
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -33,14 +35,20 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
-      body: ListView(children: [
-        ListTile(title: Text('Our Products')),
-        
-      ]),
-    );
+        appBar: AppBar(),
+        body: StreamBuilder<List<Product>>(
+            stream: db.getProducts(),
+            builder: ((context, snapshot) {
+              if (snapshot.hasError) {
+                return Text(
+                    'Error ${snapshot.error} ${snapshot.data}');
+              } else if (snapshot.hasData) {
+                final products = snapshot.data!;
+                return ListView(children: products.map(buildProduct).toList());
+              } else
+                return Center(child: CircularProgressIndicator());
+            })));
   }
 }
 
@@ -57,13 +65,30 @@ class Product {
       required this.price,
       required this.image,
       required this.id});
-  factory Product.fromMap(Map data) {
+  factory Product.fromJson(Map<String, dynamic> data) {
     return Product(
-      name: data['name'] as String,
-      description: data['description'] as String,
-      price: data['price'] as String,
-      image: data['image'] as String,
-      id: data['id'] as String,
+      name: data['name'],
+      description: data['description'],
+      price: data['price'],
+      image: data['image'],
+      id: data['id'],
     );
   }
 }
+
+class dbService {
+  final _db = FirebaseFirestore.instance.collection(""test);
+
+  Stream<List<Product>> getProducts() {
+    _db.doc()
+  }
+
+  dbService();
+}
+
+Widget buildProduct(Product product) => ListTile(
+      title: Text(product.name),
+      subtitle: Text(product.description),
+      trailing: Text(product.price),
+      leading: Image.network(product.image),
+    );
