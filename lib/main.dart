@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import '../compon/appBar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -37,13 +37,12 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBa(),
         body: StreamBuilder<List<Product>>(
             stream: db.getProducts(),
             builder: ((context, snapshot) {
               if (snapshot.hasError) {
-                return Text(
-                    'Error ${snapshot.error} ${snapshot.data}');
+                return Text('Error ${snapshot.error} ${snapshot.data}');
               } else if (snapshot.hasData) {
                 final products = snapshot.data!;
                 return ListView(children: products.map(buildProduct).toList());
@@ -65,24 +64,23 @@ class Product {
       required this.description,
       required this.price,
       required this.image,
-      required this.id});
+      this.id});
   factory Product.fromJson(Map<String, dynamic> data) {
     return Product(
       name: data['name'] as String,
       description: data['description'] as String,
       price: data['price'] as String,
       image: data['image'] as String,
-      id: data['id'] as String,
     );
   }
 }
-<<<<<<< HEAD
 
 class dbService {
-  final _db = FirebaseFirestore.instance.collection(""test);
+  final _db = FirebaseFirestore.instance.collection("products");
 
   Stream<List<Product>> getProducts() {
-    _db.doc()
+    return _db.snapshots().map(
+        (event) => event.docs.map((e) => Product.fromJson(e.data())).toList());
   }
 
   dbService();
